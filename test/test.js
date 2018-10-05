@@ -1,12 +1,3 @@
-var assert = require('assert');
-describe('Array', function() {
-  describe('#indexOf()', function() {
-    it('should return -1 when the value is not present', function() {
-      assert.equal([1,2,3].indexOf(4), -1);
-    });
-  });
-});
-
 var request = require('supertest'),
     app = require('../app')
 describe('Application', function() {
@@ -16,5 +7,13 @@ describe('Application', function() {
        .get('/')
        .expect(200, 'Hello world', done);
     })
-  })
+  });
+  describe('GET /test', function() {
+    it('should return Hello World', function(done) {
+      request(app)
+       .get('/test')
+       .expect(200, 'This is only a test', done);
+    })
+  });
+
 })
